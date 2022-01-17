@@ -1,0 +1,11 @@
+{
+  "name": "password-api",
+  "version": "1.0.0",
+  "description": "An API for generating strong passwords",
+  "main": "index.js",
+  "author": "Ashish Bhushan Kumar",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.17.2"
+  }
+}
