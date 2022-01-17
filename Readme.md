@@ -1,4 +1,4 @@
-# **Password-generator API**
+# **Password API**
 
 This is a REST api made with express js to return a strong password as per user choice. 
 
