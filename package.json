@@ -5,6 +5,9 @@
   "main": "index.js",
   "author": "Ashish Bhushan Kumar",
   "license": "MIT",
+  "scripts": {
+    "start": "node index.js"
+  },
   "dependencies": {
     "express": "^4.17.2"
   }
