@@ -1,50 +1,58 @@
-const generatePassword = require("./generator");
 const express = require("express");
 const app = express();
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
-app.get("/", (req, res) => {
-  if (
-    Object.keys(req.query).length !== 4 ||
-    req.query.uppercase === undefined ||
-    req.query.symbol === undefined ||
-    req.query.len === undefined
-  ) {
-    res.status(400).json({ Message: "Wrong query", status: "400 Bad Request" });
-  } else {
-    const uppercase = req.query.uppercase === "true" ? true : false;
-    const symbol = req.query.symbol === "true" ? true : false;
-    const numbers = req.query.numbers === "true" ? true : false;
-    const len = parseInt(req.query.len);
-    if (
-      numbers &&
-      uppercase &&
-      symbol &&
-      parseInt(req.query.len) !== NaN &&
-      parseInt(req.query.len) >= 8 &&
-      parseInt(req.query.len) <= 100
-    ) {
-      res.status(200).json({
-        Message: "Request Succesfull",
-        status: "200",
-        password: generatePassword(uppercase, symbol, numbers, len),
-      });
+const gen = require("./generator");
+const { query, validationResult } = require("express-validator");
+
+app.get(
+  "/",
+
+  query("uppercase")
+    .exists()
+    .withMessage("uppercase query required")
+    .isIn(["true", "false"])
+    .withMessage("Inavlid value passed"),
+  query("numbers")
+    .exists()
+    .withMessage("numbers query required")
+    .isIn(["true", "false"])
+    .withMessage("Inavlid value passed"),
+  query("symbol")
+    .exists()
+    .withMessage("symbol query required")
+    .isIn(["true", "false"])
+    .withMessage("Invalid value passed"),
+  query("len")
+    .exists()
+    .withMessage("len query required")
+    .isInt({ min: 8, max: 100 })
+    .withMessage("len should be an integer in range 8-100"),
+
+  (req, res) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      return res
+        .status(400)
+        .json({ errors: errors.array({ onlyFirstError: true }) });
     } else {
-      if (parseInt(req.query.len) < 8 || parseInt(req.query.len) > 100) {
+      if (Object.keys(req.query).length !== 4) {
         res.status(400).json({
-          Message:
-            "Lenght of the password should be between 8 and 100 digits (inclusive)",
-          status: "400 Bad Request",
+          Message: "Extra queries Detected",
+          status: "400 Bad request",
         });
       } else {
+        var uppercase = req.query.uppercase === "true" ? true : false;
+        var symbol = req.query.symbol === "true" ? true : false;
+        var numbers = req.query.numbers === "true" ? true : false;
+        var len = req.query.len;
+        var pwd = gen(uppercase, symbol, numbers, len);
         res
-          .status(400)
-          .json({ Message: "Wrong query", status: "400 Bad Request" });
+          .status(200)
+          .json({ Message: "Request Successfull", status: "200", result: pwd });
       }
     }
   }
-});
+);
 
 app.listen(process.env.PORT || 3000, () => {
-  console.log(`Server running on port ${process.env.PORT || 3000}`);
+  console.log("Server running");
 });
