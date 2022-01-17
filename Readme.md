@@ -10,12 +10,12 @@ This API is hosted on herokuapp and in order to receive input user needs to make
 
 > https://express-pwd-api.herokuapp.com/
 
-| Query          |     Required      |   Type    |    Parameters    |
-| :---           |    :----:         |   :----:  |       ---:       |
-| **uppercase**  |     `optional`    |`Boolean`  | `true` or `false`|
-| **numbers**  |     `optional`    |`Boolean`  | `true` or `false`|            
-| **symbol**     |     `optional`    |`Boolean`  | `true` or `false`|                
-|  **len**       |        `yes`      | `Integer` | `8<=len<=100`    |
+| Query          |     Required      |   Type    |    Parameters    |  Description |
+| :---           |    :----:         |   :----:  |       :----:     |   ---:|
+| **uppercase**  |     `optional`    |`Boolean`  | `true` or `false`| _include uppercase letters in the password_|
+| **numbers**  |     `optional`    |`Boolean`  | `true` or `false`|    _include numbers in the passsword_       |
+| **symbol**     |     `optional`    |`Boolean`  | `true` or `false`|_include special symbols in the password_ |              
+|  **len**       |        `yes`      | `Integer` | `8<=len<=100`    | _specify the length of required password_|
 
 ### Example
 
