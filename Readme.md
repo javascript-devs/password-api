@@ -19,9 +19,14 @@ This API is hosted on herokuapp and in order to receive input user needs to make
 
 ### Example
 
-Suppose we need a password of `10` digits with `uppercase` , `symbols` and `numbers` include ( `lowercase` letters are set by default if user gives all the parameters as `false`), now we will make a query like this
+Suppose we need a password of `10` digits with `uppercase` , `symbols` and `numbers` included, so  we will make a query like this
 
-> https://express-pwd-api.herokuapp.com/?uppercase=true&numbers=true&symbol=true&len=10
+> Note: `lowercase` letters are set by default if user gives all the parameters as `false`
+
+
+```
+ https://express-pwd-api.herokuapp.com/?uppercase=true&numbers=true&symbol=true&len=10
+```
 
 and in response a json object would be returned like this 
 
