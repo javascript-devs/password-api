@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>password-api</title>
+    <title>Docs</title>
     <link rel="stylesheet" href="https://stackedit.io/style.css" />
   </head>
 
@@ -15,6 +15,12 @@
             <a href="#password-api">Password API</a>
             <ul>
               <li><a href="#usage">Usage</a></li>
+              <li>
+                <a href="#example">Example</a>
+                <ul>
+                  <li></li>
+                </ul>
+              </li>
               <li><a href="#errors">Errors</a></li>
             </ul>
           </li>
@@ -33,12 +39,14 @@
         </p>
         <h2 id="usage">Usage</h2>
         <p>
-          The API accepts queries as showin in
+          The API accepts queries as shown in in
           <a href="#example">example</a> with this base URL
         </p>
         <blockquote>
           <p>
-            <code>https://express-pwd-api.herokuapp.com/pwd</code>
+            <a href="https://express-pwd-api.herokuapp.com/pwd"
+              >https://express-pwd-api.herokuapp.com/pwd</a
+            >
           </p>
         </blockquote>
 
@@ -89,7 +97,7 @@
             </tr>
           </tbody>
         </table>
-        <h3 id="example">Example</h3>
+        <h2 id="example">Example</h2>
         <p>
           If we need a password of <code>10</code> digits with
           <code>uppercase</code> , <code>symbols</code> and
@@ -101,14 +109,9 @@
             gives all the parameters as <code>false</code>
           </p>
         </blockquote>
-
-        <p>
-          <a
-            href="https://express-pwd-api.herokuapp.com/pwd?uppercase=true&numbers=true&symbol=true&len=10"
-            >https://express-pwd-api.herokuapp.com/pwd?uppercase=true&amp;numbers=true&amp;symbol=true&amp;len=10</a
-          >
-        </p>
-
+        <h4 id="using-your-browser">1. Using your browser</h4>
+        <pre><code>https://express-pwd-api.herokuapp.com/pwd?uppercase=true&amp;numbers=true&amp;symbol=true&amp;len=10
+</code></pre>
         <p>and in response a json object would be returned like this</p>
         <pre
           class="language-json"
@@ -118,7 +121,38 @@
 <span class="token string">"result"</span><span class="token punctuation">:</span> <span class="token string">"K0AP{dw=ma"</span>
 <span class="token punctuation">}</span>
 </code></pre>
-        <h3 id="using-curl">Using curl</h3>
+        <h4 id="using-node-with-axios">2. Using node with axios</h4>
+        <pre
+          class="language-js"
+        ><code class="prism  language-js"><span class="token keyword">const</span> axios <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">"axios"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">var</span> uppercase <span class="token operator">=</span> <span class="token string">"true"</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> numbers <span class="token operator">=</span> <span class="token string">"true"</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> symbol <span class="token operator">=</span> <span class="token string">"true"</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> length <span class="token operator">=</span> <span class="token string">"10"</span><span class="token punctuation">;</span>
+
+<span class="token comment">//make sure you pass true or false as a string and not boolean values</span>
+<span class="token keyword">const</span> <span class="token function-variable function">getdata</span> <span class="token operator">=</span> <span class="token punctuation">(</span>uppercase<span class="token punctuation">,</span> numbers<span class="token punctuation">,</span> symbol<span class="token punctuation">,</span> length<span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+	axios
+		<span class="token punctuation">.</span><span class="token keyword">get</span><span class="token punctuation">(</span>
+			<span class="token template-string"><span class="token string">`https://express-pwd-api.herokuapp.com/pwd?uppercase=</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>uppercase<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">&amp;numbers=</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>numbers<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">&amp;symbol=</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>symbol<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">&amp;len=</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>length<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">`</span></span>
+		<span class="token punctuation">)</span>
+		<span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token punctuation">(</span>res<span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+			console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>res<span class="token punctuation">.</span>data<span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token punctuation">}</span><span class="token punctuation">)</span>
+		<span class="token punctuation">.</span><span class="token keyword">catch</span><span class="token punctuation">(</span><span class="token punctuation">(</span>err<span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+			console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>err<span class="token punctuation">.</span>response<span class="token punctuation">.</span>data<span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token comment">//calling the function with parameters</span>
+<span class="token function">getdata</span><span class="token punctuation">(</span>uppercase<span class="token punctuation">,</span> numbers<span class="token punctuation">,</span> symbol<span class="token punctuation">,</span> length<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+        <p>Output:</p>
+        <pre class="language-bash"><code class="prism  language-bash">  
+<span class="token punctuation">{</span><span class="token string">"Message"</span><span class="token keyword">:</span> <span class="token string">"Request Successfull"</span>,<span class="token string">"status"</span><span class="token keyword">:</span> <span class="token string">"200"</span>,<span class="token string">"result"</span><span class="token keyword">:</span> <span class="token string">"3&lt;-yiP0=!i"</span><span class="token punctuation">}</span>
+
+</code></pre>
+        <h4 id="using-curl">3. Using curl</h4>
         <pre
           class="language-bash"
         ><code class="prism  language-bash">curl -X GET <span class="token string">"https://express-pwd-api.herokuapp.com/pwd?uppercase=true&amp;numbers=true&amp;symbol=true&amp;len=10"</span>
@@ -138,8 +172,8 @@
         <pre
           class="language-json"
         ><code class="prism  language-json"><span class="token punctuation">{</span>
-   <span class="token string">"Message"</span><span class="token punctuation">:</span> <span class="token string">"Extra queries detected"</span><span class="token punctuation">,</span>
-   <span class="token string">"status"</span><span class="token punctuation">:</span> <span class="token string">"400 Bad Request"</span>
+<span class="token string">"Message"</span><span class="token punctuation">:</span> <span class="token string">"Extra queries detected"</span><span class="token punctuation">,</span>
+<span class="token string">"status"</span><span class="token punctuation">:</span> <span class="token string">"400 Bad Request"</span>
 <span class="token punctuation">}</span>
 </code></pre>
         <p>or</p>
