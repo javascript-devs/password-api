@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Docs</title>
+    <title>Welcome file</title>
     <link rel="stylesheet" href="https://stackedit.io/style.css" />
   </head>
 
@@ -133,19 +133,20 @@
 
 <span class="token comment">//make sure you pass true or false as a string and not boolean values</span>
 <span class="token keyword">const</span> <span class="token function-variable function">getdata</span> <span class="token operator">=</span> <span class="token punctuation">(</span>uppercase<span class="token punctuation">,</span> numbers<span class="token punctuation">,</span> symbol<span class="token punctuation">,</span> length<span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
-	axios
-		<span class="token punctuation">.</span><span class="token keyword">get</span><span class="token punctuation">(</span>
-			<span class="token template-string"><span class="token string">`https://express-pwd-api.herokuapp.com/pwd?uppercase=</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>uppercase<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">&amp;numbers=</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>numbers<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">&amp;symbol=</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>symbol<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">&amp;len=</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>length<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">`</span></span>
-		<span class="token punctuation">)</span>
-		<span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token punctuation">(</span>res<span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
-			console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>res<span class="token punctuation">.</span>data<span class="token punctuation">)</span><span class="token punctuation">;</span>
-		<span class="token punctuation">}</span><span class="token punctuation">)</span>
-		<span class="token punctuation">.</span><span class="token keyword">catch</span><span class="token punctuation">(</span><span class="token punctuation">(</span>err<span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
-			console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>err<span class="token punctuation">.</span>response<span class="token punctuation">.</span>data<span class="token punctuation">)</span><span class="token punctuation">;</span>
-		<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  axios
+    <span class="token punctuation">.</span><span class="token keyword">get</span><span class="token punctuation">(</span>
+      <span class="token template-string"><span class="token string">`https://express-pwd-api.herokuapp.com/pwduppercase=</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>uppercase<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">&amp;numbers=</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>numbers<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">&amp;symbol=</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>symbol<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">&amp;len=</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>length<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">`</span></span>
+    <span class="token punctuation">)</span>
+    <span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token punctuation">(</span>res<span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+      console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>res<span class="token punctuation">.</span>data<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span>
+    <span class="token punctuation">.</span><span class="token keyword">catch</span><span class="token punctuation">(</span><span class="token punctuation">(</span>err<span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+      console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>err<span class="token punctuation">.</span>response<span class="token punctuation">.</span>data<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span><span class="token punctuation">;</span>
 <span class="token comment">//calling the function with parameters</span>
 <span class="token function">getdata</span><span class="token punctuation">(</span>uppercase<span class="token punctuation">,</span> numbers<span class="token punctuation">,</span> symbol<span class="token punctuation">,</span> length<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
 </code></pre>
         <p>Output:</p>
         <pre class="language-bash"><code class="prism  language-bash">  
