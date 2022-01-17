@@ -1,6 +1,8 @@
 # **Password-generator API**
 
-This is a REST api made with express js to return a strong password as per user choice.
+This is a REST api made with express js to return a strong password as per user choice. 
+
+Made by:- [Ashish Bhushan](https://github.com/code-withAshish)
 
 ## Usage
 
