@@ -25,16 +25,30 @@ If we need a password of `10` digits with `uppercase` , `symbols` and `numbers` 
 ```
  https://express-pwd-api.herokuapp.com/?uppercase=true&numbers=true&symbol=true&len=10
 ```
-
 and in response a json object would be returned like this 
 
 ```json
 {
 "Message": "Request Succesfull",
 "status": "200",
-"password": "K0AP{dw=ma"
+"result": "K0AP{dw=ma"
 }
 ```
+### Using curl
+
+```bash
+curl -X GET "https://express-pwd-api.herokuapp.com/?uppercase=true&numbers=true&symbol=true&len=10"
+
+```
+Output
+```json
+{
+  "Message": "Request Successfull",
+  "status": "200",
+  "result": "B8\"/KvX8u+"
+}
+```
+## Errors
 if you  are getting something like this 
 
 ```json
