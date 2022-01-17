@@ -1,0 +1,164 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Welcome file</title>
+    <link rel="stylesheet" href="https://stackedit.io/style.css" />
+  </head>
+
+  <body class="stackedit">
+    <div class="stackedit__left">
+      <div class="stackedit__toc">
+        <ul>
+          <li>
+            <a href="#password-api">Password API</a>
+            <ul>
+              <li><a href="#usage">Usage</a></li>
+              <li><a href="#errors">Errors</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="stackedit__right">
+      <div class="stackedit__html">
+        <h1 id="password-api"><strong>Password API</strong></h1>
+        <p>
+          This is a REST api made with express js to create random passwords.
+        </p>
+        <p>
+          Made by:-
+          <a href="https://github.com/code-withAshish">Ashish Bhushan</a>
+        </p>
+        <h2 id="usage">Usage</h2>
+        <p>
+          The API accepts queries as showin in
+          <a href="#example">example</a> with this base URL
+        </p>
+        <blockquote>
+          <p>
+            <a href="https://express-pwd-api.herokuapp.com/"
+              >https://express-pwd-api.herokuapp.com/pwd</a
+            >
+          </p>
+        </blockquote>
+
+        <table>
+          <thead>
+            <tr>
+              <th align="left">Query</th>
+              <th align="center">Required</th>
+              <th align="center">Type</th>
+              <th align="center">Parameters</th>
+              <th align="right">Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td align="left"><strong>uppercase</strong></td>
+              <td align="center"><code>yes</code></td>
+              <td align="center"><code>Boolean</code></td>
+              <td align="center"><code>true</code> or <code>false</code></td>
+              <td align="right">
+                <em>include uppercase letters in the password</em>
+              </td>
+            </tr>
+            <tr>
+              <td align="left"><strong>numbers</strong></td>
+              <td align="center"><code>yes</code></td>
+              <td align="center"><code>Boolean</code></td>
+              <td align="center"><code>true</code> or <code>false</code></td>
+              <td align="right"><em>include numbers in the passsword</em></td>
+            </tr>
+            <tr>
+              <td align="left"><strong>symbol</strong></td>
+              <td align="center"><code>yes</code></td>
+              <td align="center"><code>Boolean</code></td>
+              <td align="center"><code>true</code> or <code>false</code></td>
+              <td align="right">
+                <em>include special symbols in the password</em>
+              </td>
+            </tr>
+            <tr>
+              <td align="left"><strong>len</strong></td>
+              <td align="center"><code>yes</code></td>
+              <td align="center"><code>Integer</code></td>
+              <td align="center"><code>8&lt;=len&lt;=100</code></td>
+              <td align="right">
+                <em>specify the length of required password</em>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <h3 id="example">Example</h3>
+        <p>
+          If we need a password of <code>10</code> digits with
+          <code>uppercase</code> , <code>symbols</code> and
+          <code>numbers</code> included, so we will make a query like this
+        </p>
+        <blockquote>
+          <p>
+            Note: <code>lowercase</code> letters are set by default if user
+            gives all the parameters as <code>false</code>
+          </p>
+        </blockquote>
+        <pre><code> https://express-pwd-api.herokuapp.com/pwd?uppercase=true&amp;numbers=true&amp;symbol=true&amp;len=10
+</code></pre>
+        <p>and in response a json object would be returned like this</p>
+        <pre
+          class="language-json"
+        ><code class="prism  language-json"><span class="token punctuation">{</span>
+<span class="token string">"Message"</span><span class="token punctuation">:</span> <span class="token string">"Request Succesfull"</span><span class="token punctuation">,</span>
+<span class="token string">"status"</span><span class="token punctuation">:</span> <span class="token string">"200"</span><span class="token punctuation">,</span>
+<span class="token string">"result"</span><span class="token punctuation">:</span> <span class="token string">"K0AP{dw=ma"</span>
+<span class="token punctuation">}</span>
+</code></pre>
+        <h3 id="using-curl">Using curl</h3>
+        <pre
+          class="language-bash"
+        ><code class="prism  language-bash">curl -X GET <span class="token string">"https://express-pwd-api.herokuapp.com/pwd?uppercase=true&amp;numbers=true&amp;symbol=true&amp;len=10"</span>
+
+</code></pre>
+        <p>Output</p>
+        <pre
+          class="language-json"
+        ><code class="prism  language-json"><span class="token punctuation">{</span>
+  <span class="token string">"Message"</span><span class="token punctuation">:</span> <span class="token string">"Request Successfull"</span><span class="token punctuation">,</span>
+  <span class="token string">"status"</span><span class="token punctuation">:</span> <span class="token string">"200"</span><span class="token punctuation">,</span>
+  <span class="token string">"result"</span><span class="token punctuation">:</span> <span class="token string">"B8\"/KvX8u+"</span>
+<span class="token punctuation">}</span>
+</code></pre>
+        <h2 id="errors">Errors</h2>
+        <p>if you are getting something like this</p>
+        <pre
+          class="language-json"
+        ><code class="prism  language-json"><span class="token punctuation">{</span>
+   <span class="token string">"Message"</span><span class="token punctuation">:</span> <span class="token string">"Extra queries detected"</span><span class="token punctuation">,</span>
+   <span class="token string">"status"</span><span class="token punctuation">:</span> <span class="token string">"400 Bad Request"</span>
+<span class="token punctuation">}</span>
+</code></pre>
+        <p>or</p>
+        <pre
+          class="language-json"
+        ><code class="prism  language-json"><span class="token punctuation">{</span>
+   <span class="token string">"errors"</span><span class="token punctuation">:</span><span class="token punctuation">[</span>
+      <span class="token punctuation">{</span>
+         <span class="token string">"msg"</span><span class="token punctuation">:</span><span class="token string">"len query required"</span><span class="token punctuation">,</span>
+         <span class="token string">"param"</span><span class="token punctuation">:</span><span class="token string">"len"</span><span class="token punctuation">,</span>
+         <span class="token string">"location"</span><span class="token punctuation">:</span><span class="token string">"query"</span>
+      <span class="token punctuation">}</span>
+   <span class="token punctuation">]</span>
+<span class="token punctuation">}</span>
+</code></pre>
+        <p>
+          chances are you have written some query incorrectly like
+          <em>number</em> instead of <code>numbers</code> or
+          <em>tru</em> instead of <code>true</code>, provided too many
+          queries,provided less queries.<br />
+          So, please check the Usage section in case of any problems.
+        </p>
+      </div>
+    </div>
+  </body>
+</html>

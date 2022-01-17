@@ -6,7 +6,7 @@ Made by:- [Ashish Bhushan](https://github.com/code-withAshish)
 
 ## Usage
 The API accepts queries as showin in [example](#example) with this base URL
-> https://express-pwd-api.herokuapp.com/
+> https://express-pwd-api.herokuapp.com/pwd
 
 | Query          |     Required      |   Type    |    Parameters    |  Description |
 | :---           |    :----:         |   :----:  |       :----:     |   ---:       |
@@ -23,7 +23,7 @@ If we need a password of `10` digits with `uppercase` , `symbols` and `numbers` 
 
 
 ```
- https://express-pwd-api.herokuapp.com/?uppercase=true&numbers=true&symbol=true&len=10
+https://express-pwd-api.herokuapp.com/pwd?uppercase=true&numbers=true&symbol=true&len=10
 ```
 and in response a json object would be returned like this 
 
@@ -37,7 +37,7 @@ and in response a json object would be returned like this
 ### Using curl
 
 ```bash
-curl -X GET "https://express-pwd-api.herokuapp.com/?uppercase=true&numbers=true&symbol=true&len=10"
+curl -X GET "https://express-pwd-api.herokuapp.com/pwd?uppercase=true&numbers=true&symbol=true&len=10"
 
 ```
 Output

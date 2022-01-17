@@ -2,9 +2,14 @@ const express = require("express");
 const app = express();
 const gen = require("./generator");
 const { query, validationResult } = require("express-validator");
+const path = require("path");
+
+app.get("/", (req, res) => {
+  res.sendFile(path.join(__dirname, "docs/site_docs.html"));
+});
 
 app.get(
-  "/",
+  "/pwd",
 
   query("uppercase")
     .exists()
