@@ -50,6 +50,7 @@ app.get(
         var numbers = req.query.numbers === "true" ? true : false;
         var len = req.query.len;
         var pwd = gen(uppercase, symbol, numbers, len);
+        res.header("Access-Control-Allow-Origin", "*");
         res
           .status(200)
           .json({ Message: "Request Successfull", status: "200", result: pwd });
