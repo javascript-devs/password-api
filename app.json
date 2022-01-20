@@ -1,0 +1,6 @@
+{
+  "name": "express-pwd-api",
+  "description": "A simple API to create random passwords",
+  "image": "heroku/nodejs",
+  "addons": []
+}
