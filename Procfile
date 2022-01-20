@@ -1,1 +1,1 @@
-web:node index.js
+web: yarn install; node index.js
