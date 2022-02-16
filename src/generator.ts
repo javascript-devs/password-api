@@ -5,11 +5,11 @@ const SYMBOL_CHAR_CODES = arrayFromLowToHigh(33, 47)
   .concat(arrayFromLowToHigh(58, 64))
   .concat(arrayFromLowToHigh(91, 96))
   .concat(arrayFromLowToHigh(123, 126));
-function generatePassword(
-  includeUppercase,
-  includeSymbols,
-  includeNumbers,
-  characterAmount
+export default function generatePassword(
+  includeUppercase: any,
+  includeSymbols: any,
+  includeNumbers: any,
+  characterAmount: any
 ) {
   let charCodes = LOWERCASE_CHAR_CODES;
   if (includeUppercase) charCodes = charCodes.concat(UPPERCASE_CHAR_CODES);
@@ -25,12 +25,10 @@ function generatePassword(
   return passwordCharacters.join("");
 }
 
-function arrayFromLowToHigh(low, high) {
+function arrayFromLowToHigh(low: number, high: number) {
   const array = [];
   for (let i = low; i <= high; i++) {
     array.push(i);
   }
   return array;
 }
-
-module.exports = generatePassword;
