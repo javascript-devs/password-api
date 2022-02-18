@@ -45,6 +45,8 @@ router.get('/pwd',
             };
         }
         else {
+            ctx.set("Content-Type", "application/json");
+            ctx.set("Access-Control-Allow-Origin", "*");
             ctx.body = {
                 Message: "Request Successfull",
                 status: 200,
