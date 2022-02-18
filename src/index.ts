@@ -7,6 +7,8 @@ import generatePassword from './generator';
 const app = new Koa();
 const router = new Router();
 
+app.use(cors());
+
 router.get('/', (ctx: { type: string; body: ReadStream; }, next: any) => {
     ctx.type = 'html';
     ctx.body = createReadStream('./docs/site_docs.html');
@@ -37,7 +39,7 @@ router.get('/pwd',
         .isInt({ min: 8, max: 100 })
         .withMessage("Invalid value passed")
         .build(),
-    (ctx: Router.RouterContext<Koa.DefaultState, Koa.DefaultContext>) => {
+    async (ctx: Router.RouterContext<Koa.DefaultState, Koa.DefaultContext>) => {
         const errors = validationResults(ctx);
         if (errors.hasErrors()) { // if there are errors
             ctx.status = 400;
@@ -47,7 +49,7 @@ router.get('/pwd',
         }
         else {
             ctx.set("Content-Type", "application/json");
-            ctx.set("Access-Control-Allow-Origin", "GET");
+            ctx.set("Access-Control-Allow-Origin", "*");
             ctx.body = {
                 Message: "Request Successfull",
                 status: 200,
@@ -63,7 +65,6 @@ router.get('/pwd',
 
 app
     .use(router.routes())
-    .use(router.allowedMethods())
-    .use(cors());
+    .use(router.allowedMethods());
 
 app.listen(process.env.PORT || 3000);
