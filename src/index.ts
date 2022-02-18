@@ -9,6 +9,7 @@ const router = new Router();
 
 app.use(cors());
 
+
 router.get('/', (ctx: { type: string; body: ReadStream; }, next: any) => {
     ctx.type = 'html';
     ctx.body = createReadStream('./docs/site_docs.html');
@@ -40,6 +41,9 @@ router.get('/pwd',
         .withMessage("Invalid value passed")
         .build(),
     async (ctx: Router.RouterContext<Koa.DefaultState, Koa.DefaultContext>) => {
+        ctx.headers['Content-Type'] = 'text/plain';
+        ctx.headers['Access-Control-Allow-Origin'] = '*';
+
         const errors = validationResults(ctx);
         if (errors.hasErrors()) { // if there are errors
             ctx.status = 400;
@@ -48,8 +52,6 @@ router.get('/pwd',
             };
         }
         else {
-            ctx.set("Content-Type", "application/json");
-            ctx.set("Access-Control-Allow-Origin", "*");
             ctx.body = {
                 Message: "Request Successfull",
                 status: 200,
