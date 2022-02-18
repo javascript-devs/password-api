@@ -1,6 +1,7 @@
 import Koa from 'koa';
 import { createReadStream, ReadStream } from 'fs';
 import Router from '@koa/router';
+import cors from '@koa/cors';
 import { query, validationResults } from 'koa-req-validation';
 import generatePassword from './generator';
 const app = new Koa();
@@ -46,7 +47,7 @@ router.get('/pwd',
         }
         else {
             ctx.set("Content-Type", "application/json");
-            ctx.set("Access-Control-Allow-Origin", "*");
+            ctx.set("Access-Control-Allow-Origin", "GET");
             ctx.body = {
                 Message: "Request Successfull",
                 status: 200,
@@ -62,6 +63,7 @@ router.get('/pwd',
 
 app
     .use(router.routes())
-    .use(router.allowedMethods());
+    .use(router.allowedMethods())
+    .use(cors());
 
 app.listen(process.env.PORT || 3000);
