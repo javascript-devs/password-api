@@ -39,7 +39,7 @@ router.get('/pwd',
     async (ctx: Router.RouterContext<Koa.DefaultState, Koa.DefaultContext>) => {
 
         ctx.set({
-            'Access-Control-Allow-Origin': ctx.request.header.origin,
+            'Access-Control-Allow-Origin': '*',
             'Access-Control-Allow-Methods': 'GET',
             'Access-Control-Allow-Headers': 'Content-Type',
             'Access-Control-Allow-Credentials': 'true',
