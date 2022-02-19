@@ -1,11 +1,12 @@
 import Koa from 'koa';
 import { createReadStream, ReadStream } from 'fs';
 import Router from '@koa/router';
+import cors from 'koa2-cors';
 import { query, validationResults } from 'koa-req-validation';
 import generatePassword from './generator';
 const app = new Koa();
 const router = new Router();
-
+app.use(cors());
 router.get('/', (ctx: { type: string; body: ReadStream; }) => {
     ctx.type = 'html';
     ctx.body = createReadStream('./docs/site_docs.html');
@@ -37,15 +38,6 @@ router.get('/pwd',
         .withMessage("Invalid value passed")
         .build(),
     async (ctx: Router.RouterContext<Koa.DefaultState, Koa.DefaultContext>) => {
-
-        ctx.set({
-            'Access-Control-Allow-Origin': '*',
-            'Access-Control-Allow-Methods': 'GET',
-            'Access-Control-Allow-Headers': 'Content-Type',
-            'Access-Control-Allow-Credentials': 'true',
-        });
-
-
         const errors = validationResults(ctx);
         if (errors.hasErrors()) { // if there are errors
             ctx.status = 400;

@@ -13,9 +13,11 @@
   },
   "dependencies": {
     "@koa/router": "^10.1.1",
+    "@types/koa2-cors": "^2.0.2",
     "koa": "^2.13.4",
     "koa-bodyparser": "^4.3.0",
     "koa-req-validation": "^0.16.0",
+    "koa2-cors": "^2.0.6",
     "validator": "^13.7.0"
   },
   "devDependencies": {
