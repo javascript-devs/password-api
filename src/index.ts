@@ -6,8 +6,7 @@ import generatePassword from './generator';
 const app = new Koa();
 const router = new Router();
 
-
-router.get('/', (ctx: { type: string; body: ReadStream; }, next: any) => {
+router.get('/', (ctx: { type: string; body: ReadStream; }) => {
     ctx.type = 'html';
     ctx.body = createReadStream('./docs/site_docs.html');
 });
@@ -38,7 +37,15 @@ router.get('/pwd',
         .withMessage("Invalid value passed")
         .build(),
     async (ctx: Router.RouterContext<Koa.DefaultState, Koa.DefaultContext>) => {
-        ctx.header['Access-Control-Allow-Origin'] = '*';
+
+        ctx.set({
+            'Access-Control-Allow-Origin': ctx.request.header.origin,
+            'Access-Control-Allow-Methods': 'GET',
+            'Access-Control-Allow-Headers': 'Content-Type',
+            'Access-Control-Allow-Credentials': 'true',
+        });
+
+
         const errors = validationResults(ctx);
         if (errors.hasErrors()) { // if there are errors
             ctx.status = 400;

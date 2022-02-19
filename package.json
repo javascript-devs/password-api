@@ -2,7 +2,7 @@
   "name": "password-api",
   "version": "1.0.0",
   "description": "An API for generating strong passwords",
-  "main": "root/index.ts",
+  "main": "src/index.ts",
   "author": "Ashish Bhushan Kumar",
   "license": "MIT",
   "scripts": {
